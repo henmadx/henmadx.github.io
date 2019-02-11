@@ -1,0 +1,10 @@
+11/02 - 
+1)Masih banyak kekurangan di git ,cherry-pick <./Ulang Lagi>
+2)Pelajaran baru dari kernel :sourcecode,toolchain <./Ulang Lagi>
+sc : 
+utd merged : 
+git fetch https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/ v3.18.xxx
+git merge
+caf : https://source.codeaurora.org/quic/la/kernel/msm-3.18/ (La.um7.6.1)
+toolchain : https://releases.linaro.org/components/toolchain/binaries/7.4-2019.02/aarch64-linux-gnu/gcc-linaro-7.4.1-2019.02-x86_64_aarch64-linux-gnu.tar.xz
+3)gatau cara build.sh,dll <./Pelajari>
