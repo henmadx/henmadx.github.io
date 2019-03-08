@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-<project name="LineageOS/android_device_xiaomi_capricorn"  path="device/xiaomi/capricorn" remote="github" revision="lineage-16.0" />
-<project name="LineageOS/android_device_xiaomi_msm8996-common"  path="device/xiaomi/msm8996-common" remote="github" revision="lineage-16.0" />
-<project name="TheMuppets/proprietary_vendor_xiaomi" path="vendor/xiaomi" remote="github" revision="lineage-16.0"/>
-<project name="henmadx/kernel_xiaomi_msm8996" path="kernel/xiaomi/msm8996" revision="staging/P-KernelX" remote="github"/>
+<project name="henmadx/android_device_xiaomi_capricorn"  path="device/xiaomi/capricorn" remote="github" revision="lineage-16.0" />
+<project name="henmadx/android_device_xiaomi_msm8996-common"  path="device/xiaomi/msm8996-common" remote="github" revision="lineage-16.0" />
+<project name="henmadx/vendor_xiaomi_asd" path="vendor/xiaomi" remote="github" revision="eas" />
+<project name="henmadx/android_kernel_xiaomi_msm8996-1" path="kernel/xiaomi/msm8996" revision="bg345" remote="github" />
 </manifest>
