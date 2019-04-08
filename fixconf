@@ -1,0 +1,23 @@
+Please Remove ConfigPanel and Read This : 
+
+1. Add This in BoardConfigCommon.mk :
+
+# Lineage Hardware
+JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
+
+2. Open sepolicy/system_server.te and Add This :
+
+allow system_server proc_touchpanel:file rw_file_perms;
+
+3. Delete:
+
+Open sepolicy/file_contexts and delete this :
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.xiaomi_8996      u:object_r:hal_lineage_touch_default_exec:s0
+
+delete this file :
+sepolicy/hal_lineage_touch_default.te
+
+delete this folder :
+touch & overlay-lineage
+
+AND CLONE !
