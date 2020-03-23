@@ -32,10 +32,6 @@
 # use https://github.com/USBhost/build-tools-gcc
 #
 
-# Constants
-LATEST_STABLE_GCC="9.3"
-LATEST_STABLE_BINUTILS="2.34"
-
 # Prints an error in bold red
 function err() {
     echo
@@ -84,28 +80,17 @@ function bldgcc() {
     msg "Downloading build scripts..."
     [[ ! -d "$scripts_dir" ]] && git -C "$gcc_dir" clone "git://git.infradead.org/users/segher/buildall.git" build
     cd "$scripts_dir" || die "buildall clone failed!"
-
+    
     # Download GCC
-    [[ -z "$GCC_VERSION" ]] && GCC_VERSION="$LATEST_STABLE_GCC"
-    local gcc_src="gcc-$GCC_VERSION"
-
-    msg "Downloading GCC $GCC_VERSION..."
-
-    if [[ "$GCC_VERSION" == "latest" ]]; then
-        # Always update source
-        rm -fr "$gcc_src"
-        curl -LSs "https://github.com/gcc-mirror/gcc/archive/master.tar.gz" | pv - | tar -xzf -
-        mv gcc-master "$gcc_src"
-    else
-        [[ ! -d "$gcc_src" ]] && curl -LSs "https://mirrors.kernel.org/gnu/gcc/$gcc_src/$gcc_src.tar.xz" | pv - | tar -xJf -
-    fi
+    [[ -z ${GCC_VERSION} ]] && GCC_VERSION=9.3.0
+    GCC_SOURCE=gcc-${GCC_VERSION}
+    [[ ! -d ${GCC_SOURCE} ]] && curl -LSs https://mirrors.kernel.org/gnu/gcc/${GCC_SOURCE}/${GCC_SOURCE}.tar.xz | tar -xJf -
 
     # Download binutils
-    [[ -z "$BINUTILS_VERSION" ]] && BINUTILS_VERSION="$LATEST_STABLE_BINUTILS"
-    local binutils_src="binutils-$BINUTILS_VERSION"
-    msg "Downloading binutils $BINUTILS_VERSION..."
-    [[ ! -d "$binutils_src" ]] && curl -LSs "https://mirrors.kernel.org/gnu/binutils/$binutils_src.tar.xz" | tar -xJf -
-
+    [[ -z ${BINUTILS_VERSION} ]] && BINUTILS_VERSION=2.34
+    BINUTILS_SOURCE=binutils-${BINUTILS_VERSION}
+    [[ ! -d ${BINUTILS_SOURCE} ]] && curl -LSs https://mirrors.kernel.org/gnu/binutils/${BINUTILS_SOURCE}.tar.xz | tar -xJf -
+    
     # Create timert
     msg "Compiling visual timer program..."
     [[ ! -f timert ]] && make -j"$(nproc)"
